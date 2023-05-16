@@ -69,7 +69,7 @@
     - name: install python3
       dnf:
         name:
-          - python3
+          - python3-dnf
           - python3-setuptools
         disablerepo: "*"
         enablerepo: "local"
@@ -187,26 +187,7 @@
         group: trifacta
         recurse: yes
     #Update RHEL sylinux settings
-    - name: open http service in firewall
-      shell: firewall-cmd --zone=public --permanent --add-service=http
-      become: true
-
-    - name: open port 3005
-      shell: firewall-cmd --zone=public --permanent --add-port=3005/tcp
-      become: true
-
-    - name: open https service in firewall
-      shell: firewall-cmd --zone=public --permanent --add-service=https
-      become: true
-
-    - name: open port 443
-      shell: firewall-cmd --zone=public --permanent --add-port=443/tcp
-      become: true
-
-    - name: reload settings
-      shell: firewall-cmd --reload
-      become: true
-
+    
     - name: set selinux boolean to allow netrowk connect
       shell: setsebool -P httpd_can_network_connect 1
       become: true
