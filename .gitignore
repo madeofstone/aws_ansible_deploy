@@ -1,0 +1,5 @@
+# ignore ec2launchtemplate
+ec2launchtemplate.json 
+
+azure_config_template.txt
+cdp_config_template.txt
